@@ -80,7 +80,54 @@
             return false;
         }
     </script>
+<h1>Update Data Pasien</h1>
+    <form method="POST" onsubmit="return sendData()">
+        <p>
+            <label>NIK</label>
+            <input type="text" id="nik3" placeholder="NIK">
+            <label>Tanggal</label>
+            <input type="text" id="date3" placeholder="Masukkan tanggal">
+            <label>Jenis Kelamin</label>
+            <input type="text" id="gender3" placeholder="Jenis kelamin">
+            <label>Umur</label>
+            <input type="text" id="age3" placeholder="Umur">
+            <label>Lokasi</label>
+            <input type="text" id="location3" placeholder="Lokasi">
+            <label>Riwayat Kesehatan</label>
+            <input type="text" id="health_record3" placeholder="Riwayat Kesehatan">
+            <label>Status</label>
+            <input type="text" id="status3" placeholder="Status">
+        </p>
+        <input type="submit" value="Kirim" />
+    </form> 
 
+     <script>
+        function sendData() {
+            var xhr = new XMLHttpRequest();
+            var url = "https://api.catena.id/v1/vakschain/fabric/record/update";
+
+            var data = JSON.stringify({
+                nik: document.getElementById("nik3").value,
+                date: document.getElementById("date3").value,
+                gender: document.getElementById("gender3").value,
+                age: document.getElementById("age3").value,
+                location: document.getElementById("location3").value,
+                health_record: document.getElementById("health_record3").value,
+                status: document.getElementById("status3").value,
+
+    
+            });
+
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.onload = function () {               
+                console.log (this.responseText);
+            };
+
+            xhr.send(data);
+            return false;
+        }
+    </script>
 
 <h1>Penghapusan Data Pasien Lama</h1>
     <form method="POST" onsubmit="return deleteData()">
