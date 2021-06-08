@@ -81,7 +81,7 @@
         }
     </script>
 <h1>Update Data Pasien</h1>
-    <form method="POST" onsubmit="return sendData()">
+    <form method="POST" onsubmit="return updateData()">
         <p>
             <label>NIK</label>
             <input type="text" id="nik3" placeholder="NIK">
@@ -102,7 +102,7 @@
     </form> 
 
      <script>
-        function sendData() {
+        function updateData() {
             var xhr = new XMLHttpRequest();
             var url = "https://api.catena.id/v1/vakschain/fabric/record/update";
 
